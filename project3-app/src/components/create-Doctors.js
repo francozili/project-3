@@ -10,6 +10,7 @@ export default class CreateDoctorsList extends Component {
         this.onChangeDoctorsDescription = this.onChangeDoctorsDescription.bind(this);
         this.onChangeDoctorsInformation = this.onChangeDoctorsInformation.bind(this);
         this.onChangeDoctorsAvailability = this.onChangeDoctorsAvailability.bind(this);
+        this.onChangeDoctorsSex = this.onChangeDoctorsSex.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -18,6 +19,7 @@ export default class CreateDoctorsList extends Component {
             Doctors_description: "",
             Doctors_information: "",
             Doctors_availability: "",
+            Doctors_sex: "false",
         }
     }
     onChangeDoctorsName(e) {
@@ -50,6 +52,12 @@ export default class CreateDoctorsList extends Component {
         });
     }
 
+    onChangeDoctorsSex(e) {
+        this.setState({
+            Doctors_sex: e.target.value
+        });
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
@@ -59,12 +67,14 @@ export default class CreateDoctorsList extends Component {
         console.log(`Doctors Information: ${this.state.Doctors_information}`);
         console.log(`Doctors Picture: ${this.state.Doctors_picture}`);
         console.log(`Doctors Availability: ${this.state.Doctors_availability}`)
+        console.log(`Doctors Sex: ${this.state.Doctors_sex}`)
         this.state = ({
             Doctors_name: "",
             Doctors_picture: "",
             Doctors_description: "",
             Doctors_information: "",
             Doctors_availability: "",
+            Doctors_sex: "false"
         });
     }
     render() {
@@ -78,30 +88,54 @@ export default class CreateDoctorsList extends Component {
                             className="form-control"
                             value={this.state.Doctors_name}
                             onChange={this.onChangeDoctorsName} />
-
+                    </div>
+                    <div className="form-group">
                         <label>Picture</label>
                         <input type="text"
                             className="form-control"
                             value={this.state.Doctors_picture}
                             onChange={this.onChangeDoctorsPicture} />
-
+                    </div>
+                    <div className="form-group">
                         <label>Description</label>
                         <input type="text"
                             className="form-control"
                             value={this.state.Doctors_description}
                             onChange={this.onChangeDoctorsDescription} />
-
-                        <label>Information</label>
-                        <input type="text"
-                            className="form-control"
-                            value={this.state.Doctors_information}
-                            onChange={this.onChangeDoctorsInformation} />
-
+                    </div>
+                    <label>Information</label>
+                    <input type="text"
+                        className="form-control"
+                        value={this.state.Doctors_information}
+                        onChange={this.onChangeDoctorsInformation} />
+                    <div className="form-group">
                         <label>Availability</label>
                         <input type="text"
                             className="form-control"
                             value={this.state.Doctors_availability}
                             onChange={this.onChangeDoctorsAvailability} />
+                    </div>
+                    <div className="form-check form-check-inline">
+                        <label>SEX</label>
+                        <input className="form-check-input"
+                            type="radio"
+                            name="Options"
+                            id="female"
+                            value="Female"
+                            checked={this.state.Doctors_sex === 'Female'}
+                            onChange={this.onChangeDoctorsSex}
+                        />
+                        <input className="form-check-input"
+                            type="radio"
+                            name="Options"
+                            id="male"
+                            value="Male"
+                            checked={this.state.Doctors_sex === 'Male'}
+                            onChange={this.onChangeDoctorsSex}
+                        />
+                    </div>
+                    <div className="form-group">
+                    <input type="submit" value="Create Doctor" className="btn btn-primary"/>
                     </div>
                 </form>
             </div >
