@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class DoctorsList extends Components {
+export default class DoctorsList extends Component {
     render(){
         return(
             <div>

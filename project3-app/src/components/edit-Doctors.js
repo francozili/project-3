@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class EditDoctors extends Components {
+export default class EditDoctors extends Component {
     render(){
         return(
             <div>
